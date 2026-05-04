@@ -1,0 +1,21 @@
+// swift-tools-version: 6.0
+// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+// Copyright (c) {{YEAR}} The bare-swift Project Authors.
+
+import PackageDescription
+
+let package = Package(
+    name: "{{PACKAGE_NAME}}",
+    platforms: [.macOS(.v14)],
+    products: [
+        .library(name: "{{MODULE}}", targets: ["{{MODULE}}"])
+    ],
+    targets: [
+        .target(name: "{{MODULE}}"),
+        .testTarget(
+            name: "{{MODULE}}Tests",
+            dependencies: ["{{MODULE}}"],
+            resources: [.copy("../Vectors")]
+        )
+    ]
+)

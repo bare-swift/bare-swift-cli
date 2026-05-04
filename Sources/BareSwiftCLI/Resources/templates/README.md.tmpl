@@ -1,0 +1,39 @@
+# {{PACKAGE_NAME}}
+
+_(One-sentence tagline goes here.)_
+
+Part of the [bare-swift](https://github.com/bare-swift) ecosystem.
+
+## Install
+
+Add to your `Package.swift`:
+
+```swift
+.package(url: "https://github.com/bare-swift/{{PACKAGE_NAME}}.git", from: "0.1.0")
+```
+
+Then depend on the `{{MODULE}}` product:
+
+```swift
+.product(name: "{{MODULE}}", package: "{{PACKAGE_NAME}}")
+```
+
+## Usage
+
+```swift
+import {{MODULE}}
+
+// _(≤30-line working example. Replace this comment with the real example.)_
+```
+
+## Documentation
+
+Full DocC documentation: <https://bare-swift.github.io/{{PACKAGE_NAME}}/>
+
+## Source
+
+Translated from the Rust crate [`{{SOURCE_CRATE}}`]({{SOURCE_CRATE_URL}}).{{SOURCE_NOTE}}
+
+## License
+
+Apache 2.0 with LLVM exception. See [LICENSE](./LICENSE) and [NOTICE](./NOTICE).
