@@ -22,6 +22,8 @@ struct Scaffolder {
         try writeRendered("SECURITY.md.tmpl", to: "SECURITY.md")
         try writeResource("gitignore", to: ".gitignore")
         try writeResource("ci.yml", to: ".github/workflows/ci.yml")
+        try writeRendered("docs.yml.tmpl", to: ".github/workflows/docs.yml")
+        try writeResource("release.yml", to: ".github/workflows/release.yml")
         try writeResource("PULL_REQUEST_TEMPLATE.md", to: ".github/PULL_REQUEST_TEMPLATE.md")
         try writeResource("bug_report.md", to: ".github/ISSUE_TEMPLATE/bug_report.md")
         try writeResource("feature_request.md", to: ".github/ISSUE_TEMPLATE/feature_request.md")

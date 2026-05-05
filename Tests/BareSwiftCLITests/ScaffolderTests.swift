@@ -35,6 +35,8 @@ struct ScaffolderTests {
             "SECURITY.md",
             ".gitignore",
             ".github/workflows/ci.yml",
+            ".github/workflows/docs.yml",
+            ".github/workflows/release.yml",
             ".github/PULL_REQUEST_TEMPLATE.md",
             ".github/ISSUE_TEMPLATE/bug_report.md",
             ".github/ISSUE_TEMPLATE/feature_request.md",
@@ -67,6 +69,14 @@ struct ScaffolderTests {
         #expect(packageSwift.contains("name: \"swift-uuid\""))
         #expect(packageSwift.contains(".library(name: \"UUID\""))
         #expect(packageSwift.contains(".target(name: \"UUID\")"))
+        #expect(packageSwift.contains("swift-docc-plugin"))
+
+        let docsYml = try String(
+            contentsOf: outputURL.appendingPathComponent(".github/workflows/docs.yml"),
+            encoding: .utf8
+        )
+        #expect(docsYml.contains("target: UUID"))
+        #expect(!docsYml.contains("{{"))
     }
 
     @Test("NOTICE includes source crate when provided")
