@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: macos-15,    swift: "6.0", install-swift: false }
+          - { os: ubuntu-22.04, swift: "6.0", install-swift: true }
+          - { os: ubuntu-24.04, swift: "6.0", install-swift: true }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Swift
+        if: ${{ matrix.install-swift }}
+        uses: SwiftyLab/setup-swift@latest
+        with:
+          swift-version: ${{ matrix.swift }}
+      - name: Print Swift version
+        run: swift --version
+      - name: Build (debug)
+        run: swift build -c debug
+      - name: Build (release)
+        run: swift build -c release
+      - name: Test
+        run: swift test --parallel
